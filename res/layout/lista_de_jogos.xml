@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout android:id="@+id/TableLayout01"
+
+<LinearLayout android:id="@+id/linear_lista_jogos" 
 	android:layout_width="fill_parent" 
-	android:layout_height="fill_parent"
-	android:stretchColumns="1"
+	android:layout_height="fill_parent" 
+	android:orientation="vertical"
 	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<Button
+		android:id="@+id/rodada_anterior"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="ante"
+	/>
 
-	<TableRow android:id="@+id/TableRow01" 
-		android:layout_width="fill_parent"
+	<TextView
+		android:id="@+id/rodada_atual"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	/>
+
+	<Button
+		android:id="@+id/rodada_proxima"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="prox"
+	/>
+	
+	<ListView android:id="@+id/lista_jogos" 
+		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content">
-		
-		<Button android:id="@+id/rodada_anterior"
-			android:layout_height="wrap_content" 
-			android:layout_width="wrap_content"
-			android:text="prev" />
-
-		<TextView android:id="@+id/rodada_atual"
-			android:layout_height="wrap_content" 
-			android:layout_width="wrap_content"
-			android:gravity="center_horizontal"
-			android:text="5 rodada" />
-
-		<Button android:id="@+id/rodada_proxima" 
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content" 
-			android:text="next"
-			android:gravity="right" />
-	</TableRow>
-
-</TableLayout>
+	</ListView>
+	
+</LinearLayout>

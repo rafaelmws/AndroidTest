@@ -28,8 +28,10 @@ public class SimpleGetJson {
 		return new JSONObject(result);
 	}
 	
-	public JSONArray getJsonArray(){
-		return new JSONArray();
+	public JSONArray getJsonArray() throws ClientProtocolException, IOException, JSONException{
+		String result = this.getStringResult();
+		return new JSONArray(result);
+
 	}
 	
 	private String getStringResult() throws ClientProtocolException, IOException{

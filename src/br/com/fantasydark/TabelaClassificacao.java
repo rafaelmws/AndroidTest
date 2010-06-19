@@ -14,18 +14,19 @@ public class TabelaClassificacao extends Activity {
 	final String classificacaoJson = "http://globoesporte.globo.com/esporte/sde/classificacao/brasileirao2010.json";
 	private SimpleGetJson simpleGetJson;
 	private ListView mLv;
-	
-	public ArrayList<HashMap<String,String>> getClassificacaoJson() throws Exception{
-		
+
+	public ArrayList<HashMap<String, String>> getClassificacaoJson()
+			throws Exception {
+
 		JSONArray array = this.simpleGetJson.getJsonArray();
-		ArrayList<HashMap<String,String>> itens = new ArrayList<HashMap<String,String>>();
-		
-		for (int i=0; i < array.length(); i++){
+		ArrayList<HashMap<String, String>> itens = new ArrayList<HashMap<String, String>>();
+
+		for (int i = 0; i < array.length(); i++) {
 			JSONObject obj = new JSONObject(array.getString(i));
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put("nome", obj.getString("nome_popular"));
 			map.put("ordem", obj.getString("ordem"));
-			map.put("pontos",obj.getString("pontos") + "pt");
+			map.put("pontos", obj.getString("pontos") + "pt");
 			itens.add(map);
 		}
 		return itens;
@@ -33,18 +34,19 @@ public class TabelaClassificacao extends Activity {
 
 	public void populate() throws Exception {
 		ArrayList<HashMap<String, String>> mylist = this.getClassificacaoJson();
-		SimpleAdapter mSchedule = new SimpleAdapter(this, mylist, R.layout.classificacao_time,
-		            new String[] {"ordem", "nome", "pontos"}, new int[] {R.id.posicao, R.id.time, R.id.pontos});
-		
+		SimpleAdapter mSchedule = new SimpleAdapter(this, mylist,
+				R.layout.classificacao_time, new String[] { "ordem", "nome",
+						"pontos" }, new int[] { R.id.posicao, R.id.time,
+						R.id.pontos });
+
 		mLv.setAdapter(mSchedule);
 	}
-	
+
 	@Override
-    public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tabela_classificacao);
-    	
+
 		this.simpleGetJson = new SimpleGetJson(this.classificacaoJson);
 		mLv = (ListView) findViewById(R.id.ListaClassificacao);
 		try {
@@ -52,6 +54,6 @@ public class TabelaClassificacao extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    }
-	
+	}
+
 }
