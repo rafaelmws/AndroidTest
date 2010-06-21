@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:id="@+id/linear_lista_jogos" 
+<LinearLayout android:id="@+id/simulador_linear_lista_jogos" 
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent" 
 	android:orientation="vertical"
@@ -12,27 +12,27 @@
 		android:layout_height="wrap_content"
 	>
 		<Button
-			android:id="@+id/rodada_anterior"
+			android:id="@+id/simulador_rodada_anterior"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="ante"
 		/>
 	
 		<TextView
-			android:id="@+id/rodada_atual"
+			android:id="@+id/simulador_rodada_atual"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 		/>
 	
 		<Button
-			android:id="@+id/rodada_proxima"
+			android:id="@+id/simulador_rodada_proxima"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="prox"
 		/>
 	</LinearLayout>
 	
-	<ListView android:id="@+id/lista_jogos" 
+	<ListView android:id="@+id/simulador_lista_jogos" 
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content">
 	</ListView>

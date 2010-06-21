@@ -13,8 +13,8 @@ public class ResourceWeb {
 	private final String classificacaoJson;
 	
 	public ResourceWeb(){
-		this.listaJogosJson = "http://globoesporte.globo.com/esporte/sde/classificacao/brasileirao2010/lista_de_jogos_por_rodada.json";
-		this.classificacaoJson = "http://globoesporte.globo.com/esporte/sde/classificacao/brasileirao2010.json";
+		listaJogosJson = "http://globoesporte.globo.com/esporte/sde/classificacao/brasileirao2010/lista_de_jogos_por_rodada.json";
+		classificacaoJson = "http://globoesporte.globo.com/esporte/sde/classificacao/brasileirao2010.json";
 	}
 	
 	public Campeonato getCampeonato() throws ClientProtocolException, IOException, JSONException{
@@ -35,7 +35,9 @@ public class ResourceWeb {
 				jogo = new Jogo();
 				jsonJogo = jsonJogos.getJSONArray(y).getJSONObject(i);
 				int rodada = jsonJogo.getInt("rodada");
+				int jogoId = jsonJogo.getInt("jogo_id");
 				
+				jogo.setId(jogoId);
 				jogo.setVisitante_nome( jsonJogo.getString("nome_visitante") );
 				jogo.setVisitante_slug( jsonJogo.getString("slug_visitante") );
 				

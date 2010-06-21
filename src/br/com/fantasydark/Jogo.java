@@ -13,7 +13,8 @@ public class Jogo {
 	private String  mandante_placar;
 
 	private int rodada;
-
+	private int id;
+	
 	public void setVisitante_nome(String visitante_nome) {
 		this.visitante_nome = visitante_nome;
 	}
@@ -81,6 +82,14 @@ public class Jogo {
 		hash.put("visitante_placar", this.visitante_placar);
 		
 		return hash;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
 	}
 	
 }

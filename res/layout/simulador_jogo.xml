@@ -2,20 +2,20 @@
 
 <LinearLayout 
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/lista_relativa"
+	android:id="@+id/simulador_lista_relativa"
 	android:padding="10px"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content" >	
 	
 	<TextView 
-		android:id="@+id/mandante_time" 
+		android:id="@+id/simulador_mandante_time" 
 		android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginRight="10px"
 	/>
 		
-	<TextView 
-		android:id="@+id/mandante_placar" 
+	<EditText 
+		android:id="@+id/simulador_mandante_placar" 
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginRight="10px"
@@ -28,15 +28,15 @@
         android:text=" x "
 	/>
 
-	<TextView 
-		android:id="@+id/visitante_placar" 
+	<EditText 
+		android:id="@+id/simulador_visitante_placar" 
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginRight="10px"
 	/>
 
 	<TextView 
-		android:id="@+id/visitante_time" 
+		android:id="@+id/simulador_visitante_time" 
 		android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginRight="10px"

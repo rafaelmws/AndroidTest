@@ -29,7 +29,7 @@ public class Simulador2010 extends TabActivity
         
         mTabHost.addTab(mTabHost.newTabSpec("tab_simulador")
         		.setIndicator("simulador")
-        		.setContent(R.id.textview3));
+        		.setContent(new Intent(this, SimulacotAct.class)));
         
         mTabHost.setCurrentTab(0);
 
