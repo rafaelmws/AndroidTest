@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-public class TabelaClassificacao extends Activity {
+public class ActTabelaClassificacao extends Activity {
 
 	final String classificacaoJson = "http://globoesporte.globo.com/esporte/sde/classificacao/brasileirao2010.json";
 	private SimpleGetJson simpleGetJson;

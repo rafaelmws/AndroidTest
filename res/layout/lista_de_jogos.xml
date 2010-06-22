@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:id="@+id/linear_lista_jogos" 
-	android:layout_width="fill_parent" 
-	android:layout_height="fill_parent" 
-	android:orientation="vertical"
-	xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout android:id="@+id/linear_lista_jogos"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<LinearLayout
-		android:orientation="horizontal"
+	<TableLayout 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-	>
-		<Button
-			android:id="@+id/rodada_anterior"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="ante"
-		/>
-	
-		<TextView
-			android:id="@+id/rodada_atual"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-		/>
-	
-		<Button
-			android:id="@+id/rodada_proxima"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="prox"
-		/>
-	</LinearLayout>
-	
-	<ListView android:id="@+id/lista_jogos" 
-		android:layout_width="wrap_content" 
+		android:stretchColumns="1">
+		
+		<TableRow 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+			
+			<Button android:id="@+id/rodada_anterior"
+				android:layout_gravity="left"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:text="ante" />
+
+			<TextView android:id="@+id/rodada_atual"
+				android:layout_gravity="center"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" />
+
+			<Button android:id="@+id/rodada_proxima" 
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right" 
+				android:text="prox" />
+
+		</TableRow>
+
+	</TableLayout>
+
+	<ListView android:id="@+id/lista_jogos" android:layout_width="wrap_content"
 		android:layout_height="wrap_content">
 	</ListView>
-	
+
 </LinearLayout>

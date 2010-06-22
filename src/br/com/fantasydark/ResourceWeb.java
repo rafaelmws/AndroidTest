@@ -17,6 +17,14 @@ public class ResourceWeb {
 		classificacaoJson = "http://globoesporte.globo.com/esporte/sde/classificacao/brasileirao2010.json";
 	}
 	
+	public Classificacao getClassificacao() throws ClientProtocolException, IOException, JSONException{
+		Classificacao classificacao = new Classificacao();
+		SimpleGetJson getJson = new SimpleGetJson(classificacaoJson);
+		JSONArray jsonClassificacao = getJson.getJsonArray();
+		
+		return null;
+	}
+	
 	public Campeonato getCampeonato() throws ClientProtocolException, IOException, JSONException{
 		Campeonato campeonato = new Campeonato();
 		SimpleGetJson getJson = new SimpleGetJson(listaJogosJson);

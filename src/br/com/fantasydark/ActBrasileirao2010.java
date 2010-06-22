@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-public class Simulador2010 extends TabActivity 
+public class ActBrasileirao2010 extends TabActivity 
 {
     public static final String TAG = "Simulador";
     		
@@ -21,15 +21,15 @@ public class Simulador2010 extends TabActivity
 
     	mTabHost.addTab(mTabHost.newTabSpec("tab_tabela")
     			.setIndicator("tabela")
-    			.setContent(new Intent(this, TabelaClassificacao.class)));
+    			.setContent(new Intent(this, ActTabelaClassificacao.class)));
         
     	mTabHost.addTab(mTabHost.newTabSpec("tab_jogos")
         		.setIndicator("jogos")
-    			.setContent(new Intent(this, ListaDeJogos.class)));
+    			.setContent(new Intent(this, ActListaDeJogos.class)));
         
         mTabHost.addTab(mTabHost.newTabSpec("tab_simulador")
         		.setIndicator("simulador")
-        		.setContent(new Intent(this, SimulacotAct.class)));
+        		.setContent(new Intent(this, ActSimulador.class)));
         
         mTabHost.setCurrentTab(0);
 
