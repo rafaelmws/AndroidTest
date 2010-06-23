@@ -8,11 +8,13 @@ import org.json.JSONException;
 public class Manager {
 	
 	private Campeonato campeonato = null;
+	private Classificacao classificacao = null;
 	private static Manager instance = null;
 	
 	private Manager() throws ClientProtocolException, IOException, JSONException {
 		ResourceWeb resourceWeb = new ResourceWeb();
 		this.campeonato =  resourceWeb.getCampeonato();
+		this.classificacao = resourceWeb.getClassificacao();
 	}
 	
 	public static Manager getInstance() throws ClientProtocolException, IOException, JSONException {
@@ -24,6 +26,10 @@ public class Manager {
 	
 	public Campeonato getCampetonato() {
 		return this.campeonato;
+	}
+	
+	public Classificacao getClassificacao(){
+		return this.classificacao;
 	}
 	
 }

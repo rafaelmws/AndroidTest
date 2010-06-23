@@ -22,7 +22,22 @@ public class ResourceWeb {
 		SimpleGetJson getJson = new SimpleGetJson(classificacaoJson);
 		JSONArray jsonClassificacao = getJson.getJsonArray();
 		
-		return null;
+		for(int index = 0; index < jsonClassificacao.length(); index ++){
+			ClassificacaoTime classificacaoTime = new ClassificacaoTime();
+			JSONObject jsonObj = jsonClassificacao.getJSONObject(index);
+			
+			int pontos = jsonObj.getInt("pontos");
+			String time_nome = jsonObj.getString("nome_popular");
+			String time_slug = jsonObj.getString("slug");
+			
+			classificacaoTime.setPontos(pontos);
+			classificacaoTime.setTime_nome(time_nome);
+			classificacaoTime.setTime_slug(time_slug);
+			
+			classificacao.addClassificacaoTime(classificacaoTime);
+		}
+		
+		return classificacao;
 	}
 	
 	public Campeonato getCampeonato() throws ClientProtocolException, IOException, JSONException{

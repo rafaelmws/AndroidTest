@@ -2,8 +2,6 @@ package br.com.fantasydark;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -11,23 +9,26 @@ import android.widget.SimpleAdapter;
 
 public class ActTabelaClassificacao extends Activity {
 
-	final String classificacaoJson = "http://globoesporte.globo.com/esporte/sde/classificacao/brasileirao2010.json";
-	private SimpleGetJson simpleGetJson;
 	private ListView mLv;
+	private Classificacao classificacao = null;
 
 	public ArrayList<HashMap<String, String>> getClassificacaoJson()
 			throws Exception {
 
-		JSONArray array = this.simpleGetJson.getJsonArray();
-		ArrayList<HashMap<String, String>> itens = new ArrayList<HashMap<String, String>>();
+		ArrayList<HashMap<String, String>> itens = new ArrayList<HashMap<String,String>>();
+		this.classificacao.reorder();
+		
+		for (int i = 0; i < this.classificacao.getClassificacao().size(); i++) {
 
-		for (int i = 0; i < array.length(); i++) {
-			JSONObject obj = new JSONObject(array.getString(i));
+			ClassificacaoTime classificacaoTime = this.classificacao
+					.getClassificacao().get(i);
+
 			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("nome", obj.getString("nome_popular"));
-			map.put("ordem", obj.getString("ordem"));
-			map.put("pontos", obj.getString("pontos") + "pt");
-			itens.add(map);
+			map.put("nome", classificacaoTime.getTime_nome() );
+			map.put("ordem", Integer.toString(i + 1) );
+			map.put("pontos", classificacaoTime.getPontos() + "pt");
+			
+			itens .add(map);
 		}
 		return itens;
 	}
@@ -47,13 +48,21 @@ public class ActTabelaClassificacao extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tabela_classificacao);
 
-		this.simpleGetJson = new SimpleGetJson(this.classificacaoJson);
-		mLv = (ListView) findViewById(R.id.ListaClassificacao);
+		this.mLv = (ListView) findViewById(R.id.ListaClassificacao);
+
 		try {
+			this.classificacao = Manager.getInstance().getClassificacao();
+			ClassificacaoTime flamengo =  this.classificacao.getTime("flamengo");
+			flamengo.setPontos(50);
+			
+			this.classificacao.addClassificacaoTime(flamengo);
+			this.classificacao.reorder();
+			
 			populate();
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
+
 	}
 
 }
