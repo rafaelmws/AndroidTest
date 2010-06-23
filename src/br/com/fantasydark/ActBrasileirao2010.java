@@ -8,8 +8,7 @@ import android.widget.TabHost;
 public class ActBrasileirao2010 extends TabActivity 
 {
     public static final String TAG = "Simulador";
-    		
-    /** Called when the activity is first created. */
+    		    
     @Override
     public void onCreate(Bundle savedInstanceState)
     {    	
