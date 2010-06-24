@@ -11,18 +11,20 @@ public class Classificacao {
 	}
 	
 	public void reorder(){
+		
+		int total = this.classificacaoTimes.size();
+		int inicio = total -1;
 		//Buble Sort
-		for (int index = this.classificacaoTimes.size() -1; index < 0; index ++){
+		for (int index = inicio; index >= 0; index --){
 			
 			int anterior = index - 1;
-			if (anterior > 0){
+			if (anterior >= 0){
 				ClassificacaoTime classificacaoTimeAnterior = this.classificacaoTimes.get(anterior);
 				ClassificacaoTime classificacaoTime = this.classificacaoTimes.get(index);
 				
-				String novo_nome = classificacaoTime.getTime_nome() + " -+- ";
-				classificacaoTime.setTime_nome(novo_nome);
-				
 				if (classificacaoTime.getPontos() > classificacaoTimeAnterior.getPontos()){
+					classificacaoTime.setPosicao(anterior + 1);
+					classificacaoTimeAnterior.setPosicao(index + 1);
 					this.classificacaoTimes.set(anterior, classificacaoTime);
 					this.classificacaoTimes.set(index, classificacaoTimeAnterior);
 				}
@@ -46,7 +48,6 @@ public class Classificacao {
 			this.classificacaoTimes.set(index, classificacaoTime);
 		}
 		
-		this.reorder();
 	}
 	
 	public ClassificacaoTime getTime(String slug_time){

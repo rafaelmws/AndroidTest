@@ -14,8 +14,8 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int LinearLayout01=0x7f050019;
-        public static final int ListaClassificacao=0x7f05001a;
+        public static final int LinearLayout01=0x7f050018;
+        public static final int ListaClassificacao=0x7f050019;
         public static final int layout_root=0x7f050004;
         public static final int linear_lista_jogos=0x7f05000a;
         public static final int lista_jogos=0x7f05000e;
@@ -27,14 +27,13 @@ public final class R {
         public static final int rodada_anterior=0x7f05000b;
         public static final int rodada_atual=0x7f05000c;
         public static final int rodada_proxima=0x7f05000d;
+        public static final int sim_confirmar=0x7f050017;
+        public static final int sim_time1_nome=0x7f050015;
+        public static final int sim_time1_placar=0x7f050016;
         public static final int simulador_linear_lista_jogos=0x7f050014;
-        public static final int simulador_lista_jogos=0x7f050018;
         public static final int simulador_lista_relativa=0x7f05000f;
         public static final int simulador_mandante_placar=0x7f050011;
         public static final int simulador_mandante_time=0x7f050010;
-        public static final int simulador_rodada_anterior=0x7f050015;
-        public static final int simulador_rodada_atual=0x7f050016;
-        public static final int simulador_rodada_proxima=0x7f050017;
         public static final int simulador_visitante_placar=0x7f050012;
         public static final int simulador_visitante_time=0x7f050013;
         public static final int text=0x7f050005;

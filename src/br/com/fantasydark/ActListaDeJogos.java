@@ -3,6 +3,7 @@ package br.com.fantasydark;
 import java.util.ArrayList;
 import java.util.HashMap;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import android.view.View;
@@ -22,7 +23,7 @@ public class ActListaDeJogos extends Activity {
 	private Campeonato campeonato;
 
 	private void populate() throws Exception {
-		int rodada = this.campeonato.getRodadaCorrente();
+		int rodada = campeonato.getRodadaCorrente();
 		
 		ArrayList<HashMap<String, String>> mylist = this.campeonato
 				.getJogosArray(rodada);
@@ -94,13 +95,17 @@ public class ActListaDeJogos extends Activity {
 		this.btnRodadaAnterior = (Button) findViewById(R.id.rodada_anterior);
 		this.btnRodadaProxima = (Button) findViewById(R.id.rodada_proxima);
 		this.txtRodadaAtual = (TextView) findViewById(R.id.rodada_atual);
-
+		ProgressDialog dialog = ProgressDialog.show(this, "", 
+                "carregando dados do campeonato brasileiro", true);
 		try {
+			dialog.show();
 			this.campeonato = Manager.getInstance().getCampetonato();
 			this.populate();
+			dialog.hide();
 
 		} catch (Exception e) {
 			this.populate_erro(e.getMessage());
+			dialog.hide();
 		}
 
 		this.btnRodadaAnterior.setOnClickListener(new OnClickListener() {

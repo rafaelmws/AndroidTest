@@ -5,10 +5,13 @@ import java.io.IOException;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
+import android.app.Activity;
+
 public class Manager {
 	
 	private Campeonato campeonato = null;
 	private Classificacao classificacao = null;
+	private Activity currentActivity = null;
 	private static Manager instance = null;
 	
 	private Manager() throws ClientProtocolException, IOException, JSONException {
@@ -17,9 +20,13 @@ public class Manager {
 		this.classificacao = resourceWeb.getClassificacao();
 	}
 	
-	public static Manager getInstance() throws ClientProtocolException, IOException, JSONException {
+	public static Manager getInstance() {
 		if (instance == null) {
-			instance = new Manager();
+			try {
+				instance = new Manager();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return instance;
 	}
@@ -30,6 +37,14 @@ public class Manager {
 	
 	public Classificacao getClassificacao(){
 		return this.classificacao;
+	}
+
+	public void setCurrentActivity(Activity currentActivity) {
+		this.currentActivity = currentActivity;
+	}
+
+	public Activity getCurrentActivity() {
+		return currentActivity;
 	}
 	
 }

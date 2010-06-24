@@ -2,19 +2,24 @@ package br.com.fantasydark;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class ActSimulador extends Activity {
-
+	
 	private final int LOAD = 0;
 	private final int SAVE = 1;
+	
+	private EditText time1_placar = null;
+	private Button confirmar = null;
+	
 
 	/* Creates the menu items */
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,22 +46,13 @@ public class ActSimulador extends Activity {
 	}
 	
 	private void salvar_simulacao() {
-		Dialog dialog = new Dialog(this.getApplicationContext());
-
-		dialog.setContentView(R.layout.dialog_salvar_confronto);
-		dialog.setTitle("Custom Dialog");
-
-		TextView text = (TextView) dialog.findViewById(R.id.text);
-		text.setText("Hello, this is a custom dialog!");
-		
-		dialog.show();
 	}
 
 	private void carregar_simulacoes() {
-		final CharSequence[] items = {"Simulação 1", "Simulação 2", "Simulação 3"};
+		final CharSequence[] items = {"Simulacao 1", "Simulaco 2", "Simulaco 3"};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Selecione uma simulação");
+		builder.setTitle("Selecione uma simulao");
 		
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 		    public void onClick(DialogInterface dialog, int item) {
@@ -68,11 +64,37 @@ public class ActSimulador extends Activity {
 		builder.create().show();
 		
 	}
+	
+	private void populate(){
+		
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.simulador_lista_jogos);
+		
+		this.time1_placar = (EditText) findViewById(R.id.sim_time1_placar);
+		this.confirmar = (Button) findViewById(R.id.sim_confirmar) ;
+		
+		this.confirmar.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Classificacao classificacao = Manager.getInstance().getClassificacao();
+				ClassificacaoTime time = classificacao.getTime("flamengo");
+				
+				String pontos_str = time1_placar.getText().toString(); 
+				int pontos = Integer.parseInt(pontos_str); 
+				time.setPontos(pontos);
+				classificacao.addClassificacaoTime(time);
+				classificacao.reorder();
+				
+				String message = "flamengo esta na " + Integer.toString(time.getPosicao());
+				Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		
+		this.populate();
 	}
 
 }
